@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Middleware\AuthCheckMiddelware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,7 +10,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-});
+})->middleware(AuthCheckMiddelware::class)->name('dashboard');
 
 // Route::get('/login', function () {
 //     return view('auth.login');
